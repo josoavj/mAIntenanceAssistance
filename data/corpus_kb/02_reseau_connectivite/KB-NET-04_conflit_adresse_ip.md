@@ -1,6 +1,6 @@
 # ID: KB-NET-04
 # Titre: Conflit d'adresse IP
-# Catégorie: Reseau et connectivité
+# Catégorie: Réseau et connectivité
 
 ## Symptômes
 
