@@ -1,6 +1,6 @@
 # ID: KB-NET-03
 # Titre: Connexion VPN impossible
-# Catégorie: Reseau et connectivité
+# Catégorie: Réseau et connectivité
 
 ## Symptômes
 
