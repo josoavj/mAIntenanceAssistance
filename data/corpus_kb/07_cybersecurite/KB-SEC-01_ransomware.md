@@ -27,11 +27,11 @@ Ce document encadre la procedure de detection, confinement et remediation initia
 
 3. **Ne pas tenter de supprimer les fichiers chiffres ni la note de rancon.** Ces elements sont nécessaires a l'identification de la souche du ransomware (via des services comme ID Ransomware) et a une eventuelle procedure de dechiffrement ulterieure.
 
-4. **Documenter l'incident** dans l'outil de ticketing (ex : ServiceNow, Jira Service Management) : horodatage de la premiere detection, utilisateur/poste concerne, symptomes observes, actions deja realisees.
+4. **Documenter l'incident** dans l'outil de ticketing (ex : ServiceNow, Jira Service Management) : horodatage de la premiere detection, utilisateur/poste concerne, symptomes observes, actions déjà realisees.
 
 5. **Vérifier l'etendue de la propagation** via la console EDR ou le SIEM (ex : Splunk, Microsoft Sentinel) : rechercher d'autres postes presentant des indicateurs de compromission (IOC) similaires (memes hachages de fichiers, memes connexions réseau suspectes).
 
-6. **Identifier le vecteur d'entree probable** si les outils le permettent : piece jointe email, macro Office, accès RDP expose, identifiants compromis. Consigner cette information dans le ticket sans tenter de remediation avancee a ce stade.
+6. **Identifier le vecteur d'entree probable** si les outils le permettent : pièce jointe email, macro Office, accès RDP expose, identifiants compromis. Consigner cette information dans le ticket sans tenter de remediation avancee a ce stade.
 
 7. **Suspendre les comptes utilisateurs associes** au poste compromis dans l'Active Directory ou l'annuaire cloud (Azure AD/Entra ID), en cas de suspicion de vol d'identifiants.
 
@@ -39,10 +39,10 @@ Ce document encadre la procedure de detection, confinement et remediation initia
 
 L'assistant doit arreter toute action autonome et escalader immédiatement vers l'équipe de sécurité (SOC) ou le RSSI dans les cas suivants :
 
-- Plus d'un poste ou serveur affecte simultanement (suspicion de propagation laterale).
+- Plus d'un poste ou serveur affecte simultanément (suspicion de propagation laterale).
 - Un serveur critique (contrôleur de domaine, serveur de fichiers central, base de données de production) est concerne.
 - La note de rancon mentionne explicitement une exfiltration de données ("double extorsion").
-- Impossibilite d'isoler la machine a distance (EDR non fonctionnel ou desactive sur le poste).
+- Impossibilité d'isoler la machine a distance (EDR non fonctionnel ou desactive sur le poste).
 - Detection d'une désactivation ou d'une modification des outils de sécurité (antivirus, EDR, journaux d'evenements effaces).
 - Toute demande emanant d'un utilisateur ou d'un tiers concernant le paiement d'une rancon : ce point releve exclusivement d'une decision de la direction et du RSSI, jamais du support technique.
 
@@ -52,5 +52,5 @@ Dans tous les cas listes ci-dessus, l'assistant doit creer un ticket de priorit�
 
 - Eteindre ou redemarrer une machine compromise avant validation du SOC.
 - Payer, negocier ou entrer en contact avec les auteurs de l'attaque.
-- Restaurer une sauvegarde sans validation prealable de sa non-compromission par l'équipe sécurité.
+- Restaurer une sauvegarde sans validation préalable de sa non-compromission par l'équipe sécurité.
 - Communiquer publiquement ou en interne sur l'incident hors des canaux valides par la cellule de crise.
