@@ -6,13 +6,13 @@
 
 - L'utilisateur signale un message "Accès refuse" ou "Access Denied" en tentant d'ouvrir un dossier partage ou une application.
 - L'utilisateur demande explicitement l'obtention d'un nouvel accès nécessaire a ses fonctions (nouveau poste, nouveau projet, changement de service).
-- Application ou partage visible mais dont le contenu n'est pas accessible ou apparait vide en raison de droits insuffisants.
+- Application ou partage visible mais dont le contenu n'est pas accessible ou apparaît vide en raison de droits insuffisants.
 
 ## Étapes de résolution
 
 1. **Identifier precisement la ressource demandee** : chemin exact du partage réseau, ou nom precis de l'application et niveau de droit requis (lecture, ecriture, administration).
 
-2. **Vérifier que la demande est accompagnee d'une validation hierarchique ou d'une justification metier**, conformement a la procedure de gestion des accès en vigueur. Aucun octroi de droit ne doit etre effectue sans cette validation, meme pour une demande jugée mineure.
+2. **Vérifier que la demande est accompagnee d'une validation hierarchique ou d'une justification metier**, conformement a la procedure de gestion des accès en vigueur. Aucun octroi de droit ne doit etre effectue sans cette validation, même pour une demande jugée mineure.
 
 3. **Vérifier le profil actuel de l'utilisateur** dans l'annuaire (Active Directory / Entra ID) : groupes de sécurité actuels, service, fonction, pour evaluer la coherence de la demande avec son role.
 
