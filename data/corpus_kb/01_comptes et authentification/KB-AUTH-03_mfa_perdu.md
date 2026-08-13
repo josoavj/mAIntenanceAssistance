@@ -6,12 +6,12 @@
 
 - L'utilisateur ne recoit plus le code de validation par SMS ou par appel.
 - L'application d'authentification (ex : Microsoft Authenticator, Google Authenticator) n'est plus installee suite a un changement ou une perte de telephone.
-- Message "Nous n'avons pas pu vous joindre" ou blocage a l'etape MFA malgre un mot de passe correct.
+- Message "Nous n'avons pas pu vous joindre" ou blocage a l'etape MFA malgré un mot de passe correct.
 - L'utilisateur est en deplacement et n'a plus accès au numero de telephone enregistre (perte de signal, changement de carte SIM a l'etranger).
 
 ## Étapes de résolution
 
-1. **Vérifier l'identite du demandeur par un canal alternatif fiable** (appel video avec vérification visuelle du badge, confirmation par le manager direct), la procedure de MFA existant precisement pour eviter une usurpation, la vérification doit etre au moins aussi rigoureuse.
+1. **Vérifier l'identite du demandeur par un canal alternatif fiable** (appel video avec vérification visuelle du badge, confirmation par le manager direct), la procedure de MFA existant precisement pour eviter une usurpation, la vérification doit être au moins aussi rigoureuse.
 
 2. **Vérifier s'il existe une methode MFA de secours déjà enregistree** sur le compte (code de recuperation, methode d'authentification secondaire, telephone de secours) via la console d'administration (ex : Entra ID > Authentication methods).
 
@@ -28,6 +28,6 @@
 ## Conditions d'escalade
 
 - Impossibilité de vérifier l'identite du demandeur avec un niveau de confiance suffisant : ne pas proceder a la réinitialisation, escalader vers le manager ou les RH pour confirmation formelle avant toute action.
-- Compte a privileges élevés (administrateur, compte de service avec MFA) : escalader systematiquement vers l'équipe sécurité avant réinitialisation, quelle que soit l'urgence exprimee.
+- Compte a privileges élevés (administrateur, compte de service avec MFA) : escalader systématiquement vers l'équipe sécurité avant réinitialisation, quelle que soit l'urgence exprimee.
 - Demande reçue via un canal non habituel ou avec un sentiment d'urgence inhabituel de la part du demandeur (technique frequente d'ingenierie sociale ciblant precisement les procedures de réinitialisation MFA) : escalader vers le SOC avant toute action, ne pas ceder a la pression temporelle.
 - Plusieurs demandes de réinitialisation MFA rapprochees pour des comptes differents en peu de temps : signaler au SOC, possible campagne d'attaque cible.

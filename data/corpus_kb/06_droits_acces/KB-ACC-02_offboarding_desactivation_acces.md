@@ -10,7 +10,7 @@
 
 ## Étapes de résolution
 
-1. **Vérifier la reception d'une demande formelle et validee** (notification RH officielle ou ticket valide par le manager), aucune désactivation de compte ne doit etre initiee sur simple demande verbale ou informelle.
+1. **Vérifier la reception d'une demande formelle et validee** (notification RH officielle ou ticket valide par le manager), aucune désactivation de compte ne doit être initiee sur simple demande verbale ou informelle.
 
 2. **Confirmer la date et l'heure exactes de désactivation prevue**, qui peut differer de la date de fin de contrat administrative (ex : désactivation immédiate demandee pour un depart conflictuel, versus désactivation differee pour une transition standard).
 
@@ -31,6 +31,6 @@
 ## Conditions d'escalade
 
 - Depart identifié comme conflictuel ou a risque (licenciement pour faute, depart vers un concurrent direct) : escalader vers l'équipe sécurité pour une désactivation immédiate et prioritaire, potentiellement avant l'annonce officielle au collaborateur, selon la procedure de sécurité specifique a ce type de depart.
-- Absence de validation formelle RH ou manageriale malgre une demande reçue : ne pas executer la désactivation et escalader vers les RH pour confirmation avant toute action.
-- Compte du collaborateur disposant de droits d'administration sur des systemes critiques : escalader vers l'équipe sécurité pour vérifier qu'aucun accès residuel ou compte de service associé ne subsiste apres la désactivation standard.
+- Absence de validation formelle RH ou manageriale malgré une demande reçue : ne pas executer la désactivation et escalader vers les RH pour confirmation avant toute action.
+- Compte du collaborateur disposant de droits d'administration sur des systemes critiques : escalader vers l'équipe sécurité pour vérifier qu'aucun accès residuel ou compte de service associé ne subsiste après la désactivation standard.
 - Demande de recuperation de données personnelles melangees a des données professionnelles sur le matériel restitue : escalader vers les RH ou le service juridique pour arbitrage, situation sensible au regard de la protection de la vie privee.

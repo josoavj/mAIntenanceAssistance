@@ -19,9 +19,9 @@
 
 4. **Cas de couleurs incorrectes :** vérifier que les cartouches sont correctement inserees et non perimees, et lancer un alignement des couleurs via le menu de maintenance si l'option est disponible.
 
-5. **Cas de marques repetitives a intervalle fixe :** mesurer l'espacement entre deux occurrences du défaut, cette information permet generalement d'identifier le composant en cause (tambour, rouleau de transfert, fusion) selon la documentation constructeur du modele concerne.
+5. **Cas de marques repetitives a intervalle fixe :** mesurer l'espacement entre deux occurrences du défaut, cette information permet généralement d'identifier le composant en cause (tambour, rouleau de transfert, fusion) selon la documentation constructeur du modele concerne.
 
-6. **Imprimer une page de test interne** (fonction generalement disponible depuis le menu de l'imprimante elle-même, independante du pilote et du poste) pour déterminer si le défaut provient de l'imprimante elle-même ou d'un problème de pilote/poste.
+6. **Imprimer une page de test interne** (fonction généralement disponible depuis le menu de l'imprimante elle-même, independante du pilote et du poste) pour déterminer si le défaut provient de l'imprimante elle-même ou d'un problème de pilote/poste.
 
 7. **Si le défaut n'apparaît pas sur la page de test interne mais uniquement sur les impressions depuis un poste**, vérifier et reinstaller si nécessaire le pilote d'impression sur le poste concerne.
 
@@ -30,4 +30,4 @@
 - Defaut confirmé sur la page de test interne de l'imprimante (independant du poste) et non résolu par le nettoyage ou le remplacement des consommables standards : escalader vers le prestataire de maintenance de l'imprimante, intervention technique probable (remplacement de pièce).
 - Defaut apparaissant sur plusieurs imprimantes du même modele simultanément : escalader vers le support N2 matériel pour investigation d'un défaut de serie ou d'un lot de consommables defectueux.
 - Imprimante sous contrat de maintenance avec un prestataire externe : orienter directement la demande vers ce prestataire selon les modalites contractuelles, plutôt que de multiplier les tentatives de diagnostic interne.
-- Consommables (toner/encre) remplaces recemment et défaut apparu immédiatement apres ce remplacement : escalader vers le fournisseur des consommables pour vérification de la conformité du produit livre.
+- Consommables (toner/encre) remplaces recemment et défaut apparu immédiatement après ce remplacement : escalader vers le fournisseur des consommables pour vérification de la conformité du produit livre.

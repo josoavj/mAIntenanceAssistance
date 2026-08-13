@@ -4,8 +4,8 @@
 
 ## Symptômes
 
-- L'utilisateur signale ne plus pouvoir se connecter, avec un message specifique différent d'un simple verrouillage (ex : "Votre compte a ete suspendu pour activite suspecte", "Sign-in blocked by Conditional Access").
-- Le blocage a ete declenche automatiquement par une politique de sécurité (ex : Conditional Access sous Entra ID, Cloud App Security) sans action volontaire d'un administrateur.
+- L'utilisateur signale ne plus pouvoir se connecter, avec un message specifique différent d'un simple verrouillage (ex : "Votre compte a été suspendu pour activite suspecte", "Sign-in blocked by Conditional Access").
+- Le blocage a été declenche automatiquement par une politique de sécurité (ex : Conditional Access sous Entra ID, Cloud App Security) sans action volontaire d'un administrateur.
 - L'utilisateur indique un evenement recent inhabituel : connexion depuis un nouveau pays, utilisation d'un nouvel appareil non enregistre, tentative de connexion massive detectee.
 
 ## Étapes de résolution
@@ -24,7 +24,7 @@
 
 ## Conditions d'escalade
 
-- Toute suspension liée a une detection de type "identifiants compromis" (leaked credentials) provenant d'une source de renseignement sur les menaces : escalader systematiquement vers le SOC, la levée de blocage ne doit jamais etre effectuee au niveau N1 dans ce cas.
+- Toute suspension liée a une detection de type "identifiants compromis" (leaked credentials) provenant d'une source de renseignement sur les menaces : escalader systématiquement vers le SOC, la levée de blocage ne doit jamais être effectuee au niveau N1 dans ce cas.
 - Connexions simultanees depuis des localisations geographiquement incompatibles (impossible travel) sans explication verifiable : escalader immédiatement vers le SOC, suspicion forte de compromission de compte.
-- Compte a privileges élevés suspendu par la politique de sécurité : escalader systematiquement, aucune levée de blocage par le support N1 dans ce cas.
+- Compte a privileges élevés suspendu par la politique de sécurité : escalader systématiquement, aucune levée de blocage par le support N1 dans ce cas.
 - Utilisateur insistant fortement pour une levée immédiate sans explication verifiable de l'evenement declencheur : maintenir la suspension et escalader, la pression du demandeur ne constitue pas un motif de levée.

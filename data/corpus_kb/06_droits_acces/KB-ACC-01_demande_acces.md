@@ -12,13 +12,13 @@
 
 1. **Identifier precisement la ressource demandee** : chemin exact du partage réseau, ou nom precis de l'application et niveau de droit requis (lecture, ecriture, administration).
 
-2. **Vérifier que la demande est accompagnee d'une validation hierarchique ou d'une justification metier**, conformement a la procedure de gestion des accès en vigueur. Aucun octroi de droit ne doit etre effectue sans cette validation, même pour une demande jugée mineure.
+2. **Vérifier que la demande est accompagnee d'une validation hiérarchique ou d'une justification métier**, conformement a la procedure de gestion des accès en vigueur. Aucun octroi de droit ne doit être effectue sans cette validation, même pour une demande jugée mineure.
 
 3. **Vérifier le profil actuel de l'utilisateur** dans l'annuaire (Active Directory / Entra ID) : groupes de sécurité actuels, service, fonction, pour evaluer la coherence de la demande avec son role.
 
 4. **Si la ressource est geree par groupe de sécurité standard** (cas le plus frequent pour les partages réseau) : ajouter l'utilisateur au groupe de sécurité correspondant via la console d'administration.
 
-5. **Si la ressource est une application avec gestion de droits propre** (SaaS, application metier) : vérifier si le support N1 dispose des droits d'administration nécessaires ou si la demande doit etre transmise au proprietaire fonctionnel de l'application (souvent designe comme "data owner" ou "application owner").
+5. **Si la ressource est une application avec gestion de droits propre** (SaaS, application métier) : vérifier si le support N1 dispose des droits d'administration nécessaires ou si la demande doit être transmise au proprietaire fonctionnel de l'application (souvent designe comme "data owner" ou "application owner").
 
 6. **Informer l'utilisateur du delai de propagation** eventuel (synchronisation Active Directory / Entra ID, delai pouvant atteindre plusieurs heures selon l'infrastructure).
 
@@ -26,8 +26,8 @@
 
 ## Conditions d'escalade
 
-- Absence de validation hierarchique ou de justification formelle pour la demande : ne pas traiter la demande, la retourner au demandeur pour completion, sans escalade nécessaire a ce stade.
-- Demande d'accès a des données sensibles (données RH, financieres, personnelles au sens RGPD, ou classifiees confidentielles) : escalader systematiquement vers le proprietaire fonctionnel des données ou le delegue a la protection des données (DPO) avant tout octroi.
+- Absence de validation hiérarchique ou de justification formelle pour la demande : ne pas traiter la demande, la retourner au demandeur pour completion, sans escalade nécessaire a ce stade.
+- Demande d'accès a des données sensibles (données RH, financieres, personnelles au sens RGPD, ou classifiees confidentielles) : escalader systématiquement vers le proprietaire fonctionnel des données ou le delegue a la protection des données (DPO) avant tout octroi.
 - Demande d'accès a des droits d'administration système ou applicatif élevés : escalader vers l'équipe sécurité pour validation, quel que soit le justificatif fourni.
 - Demande provenant d'un compte recemment implique dans un incident de sécurité (voir KB-SEC-02) : suspendre le traitement et escalader vers le SOC avant toute action.
 - Incoherence manifeste entre la ressource demandee et le role habituel de l'utilisateur, sans justification suffisante : escalader vers le manager du demandeur pour clarification.

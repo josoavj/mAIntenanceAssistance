@@ -10,7 +10,7 @@
 
 ## Étapes de résolution
 
-1. **Vérifier l'identite du demandeur** selon la procedure de vérification en vigueur (question de sécurité, validation par le manager, ou canal de contact officiel enregistre). Aucune réinitialisation ne doit etre effectuee sans cette vérification.
+1. **Vérifier l'identite du demandeur** selon la procedure de vérification en vigueur (question de sécurité, validation par le manager, ou canal de contact officiel enregistre). Aucune réinitialisation ne doit être effectuee sans cette vérification.
 
 2. **Identifier le système concerne** : compte Active Directory / Entra ID, compte de messagerie, ou application tierce avec authentification propre (SSO ou compte local).
 
@@ -29,7 +29,7 @@
 
 ## Conditions d'escalade
 
-- Impossible de vérifier l'identite de l'utilisateur par les canaux standards : escalader vers le responsable hierarchique ou le service RH pour confirmation.
-- Le compte concerne est un compte a privileges élevés (administrateur système, compte de service) : escalader systematiquement vers l'équipe sécurité avant toute réinitialisation.
+- Impossible de vérifier l'identite de l'utilisateur par les canaux standards : escalader vers le responsable hiérarchique ou le service RH pour confirmation.
+- Le compte concerne est un compte a privileges élevés (administrateur système, compte de service) : escalader systématiquement vers l'équipe sécurité avant toute réinitialisation.
 - Demandes de réinitialisation repetees et rapprochees dans le temps pour le même compte, ou demande provenant d'un canal non habituel (ex : message prive au lieu du ticketing officiel) : suspecter une tentative d'ingenierie sociale et escalader vers le SOC sans effectuer la réinitialisation.
 - Echec technique de la console d'administration : escalader vers le support N2 infrastructure identite.

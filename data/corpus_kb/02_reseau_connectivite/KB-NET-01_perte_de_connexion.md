@@ -25,13 +25,13 @@
 
 5. **Vérifier si l'incident est isolé ou généralisé** en consultant l'outil de supervision réseau (ex : SolarWinds, PRTG, ou tableau de bord du contrôleur Wi-Fi) pour déterminer si d'autres utilisateurs du même site ou du même segment sont affectés.
 
-6. **Si l'incident est isolé au poste :** proceder au redemarrage du poste et, si nécessaire, de l'adaptateur réseau via le gestionnaire de périphériques.
+6. **Si l'incident est isolé au poste :** proceder au redémarrage du poste et, si nécessaire, de l'adaptateur réseau via le gestionnaire de périphériques.
 
 7. **Confirmer le rétablissement de la connexion** avec l'utilisateur avant clôture du ticket.
 
 ## Conditions d'escalade
 
 - Panne généralisée affectant plusieurs utilisateurs sur un même site ou segment réseau : escalader immédiatement vers l'équipe infrastructure réseau, il ne s'agit plus d'un incident individuel.
-- Aucune adresse IP attribuée malgre le renouvellement DHCP et absence de panne généralisée constatée : escalader vers le support N2 réseau pour vérification de la configuration du port switch.
+- Aucune adresse IP attribuée malgré le renouvellement DHCP et absence de panne généralisée constatée : escalader vers le support N2 réseau pour vérification de la configuration du port switch.
 - Suspicion de panne matérielle sur un équipement réseau local (prise murale, point d'accès, switch) : escalader vers KB-HW-03 et l'équipe technique concernée.
 - Panne persistante sur un site distant sans accès physique possible pour le support N1 : escalader vers l'équipe réseau avec intervention terrain a planifier.

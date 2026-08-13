@@ -4,7 +4,7 @@
 
 ## Symptômes
 
-- Message d'erreur explicite du type "Ce compte a ete verrouillé" ou "Account locked out" lors de la tentative de connexion.
+- Message d'erreur explicite du type "Ce compte a été verrouillé" ou "Account locked out" lors de la tentative de connexion.
 - L'utilisateur indique que son compte fonctionnait normalement peu de temps auparavant.
 - Blocage constate sur plusieurs services simultanément (session Windows, messagerie, VPN) si l'authentification est federee (SSO).
 
@@ -28,6 +28,6 @@
 ## Conditions d'escalade
 
 - Les journaux montrent des tentatives de connexion provenant d'une adresse IP ou d'un pays inhabituel non explique par l'utilisateur (ex : deplacement non declare) : escalader immédiatement vers le SOC avant tout deverrouillage, suspicion de compromission d'identifiants.
-- Verrouillages repetes du même compte sur une courte periode malgre le deverrouillage : escalader vers le support N2 pour analyse approfondie.
+- Verrouillages repetes du même compte sur une courte periode malgré le deverrouillage : escalader vers le support N2 pour analyse approfondie.
 - Le compte concerne est un compte a privileges élevés : deverrouillage soumis a validation préalable de l'équipe sécurité.
 - Impossibilité de déterminer la cause du verrouillage via les journaux disponibles : escalader vers l'équipe infrastructure identite.

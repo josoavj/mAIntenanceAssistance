@@ -4,10 +4,10 @@
 
 ## Symptômes
 
-- Demarrage du poste anormalement long (plusieurs minutes avant d'atteindre un etat utilisable).
+- Demarrage du poste anormalement long (plusieurs minutes avant d'atteindre un état utilisable).
 - Lenteur généralisée lors de l'ouverture des applications, y compris des applications legeres.
 - Message d'avertissement système indiquant un espace disque faible ou critique.
-- Poste qui "gele" ou devient non reactif de maniere ponctuelle, en particulier lors d'operations disque (enregistrement de fichier, ouverture d'un document volumineux).
+- Poste qui "gele" ou devient non reactif de manière ponctuelle, en particulier lors d'operations disque (enregistrement de fichier, ouverture d'un document volumineux).
 
 ## Étapes de résolution
 
@@ -19,7 +19,7 @@
 
 4. **Vérifier les programmes lances automatiquement au demarrage** via le gestionnaire des taches (onglet "Demarrage" sous Windows, ou "Elements de connexion" sous macOS) et desactiver les applications non essentielles identifiees en accord avec l'utilisateur.
 
-5. **Vérifier l'etat de sante du disque** via l'outil de diagnostic du système ou du constructeur (attribut SMART), un disque presentant des secteurs defectueux provoque une degradation progressive des performances au-dela d'un simple manque d'espace.
+5. **Vérifier l'état de sante du disque** via l'outil de diagnostic du système ou du constructeur (attribut SMART), un disque presentant des secteurs defectueux provoque une degradation progressive des performances au-dela d'un simple manque d'espace.
 
 6. **Vérifier la presence de mises a jour Windows en attente ou bloquees**, une mise a jour incomplete pouvant fortement ralentir le système (voir egalement KB-SW-02).
 
@@ -27,7 +27,7 @@
 
 ## Conditions d'escalade
 
-- Diagnostic SMART indiquant un disque en etat degrade ou en cours de défaillance : escalader vers le support matériel N2 pour planifier un remplacement, avec sauvegarde prealable des données en priorité.
-- Lenteur persistante malgre nettoyage et liberation d'espace disque significative, sans cause materielle identifiee : escalader vers le support N2 pour analyse approfondie (processus en arriere-plan, logiciel de sécurité mal configure, analyse de performance detaillee).
-- Suspicion d'un logiciel non autorise ou malveillant consommant les ressources du poste (processus inconnu fortement consommateur de CPU/disque) : escalader vers le SOC plutot que de traiter comme une simple lenteur materielle (voir KB-SEC-03).
-- Le poste est trop ancien pour repondre aux exigences de performance actuelles malgre toutes les optimisations possibles : escalader vers le responsable de la gestion de parc pour evaluation d'un remplacement dans le cadre du cycle de renouvellement.
+- Diagnostic SMART indiquant un disque en état degrade ou en cours de défaillance : escalader vers le support matériel N2 pour planifier un remplacement, avec sauvegarde préalable des données en priorité.
+- Lenteur persistante malgré nettoyage et liberation d'espace disque significative, sans cause matérielle identifiee : escalader vers le support N2 pour analyse approfondie (processus en arriere-plan, logiciel de sécurité mal configure, analyse de performance detaillee).
+- Suspicion d'un logiciel non autorise ou malveillant consommant les ressources du poste (processus inconnu fortement consommateur de CPU/disque) : escalader vers le SOC plutôt que de traiter comme une simple lenteur matérielle (voir KB-SEC-03).
+- Le poste est trop ancien pour repondre aux exigences de performance actuelles malgré toutes les optimisations possibles : escalader vers le responsable de la gestion de parc pour evaluation d'un remplacement dans le cadre du cycle de renouvellement.
