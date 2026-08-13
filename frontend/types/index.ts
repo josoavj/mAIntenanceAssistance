@@ -57,6 +57,8 @@ export interface AIAnalysis {
   missingInformation: string[];
   questionsToAsk: string[];
   diagnosis: string;
+  /** Message rédigé par l'agent à destination du demandeur. */
+  userResponse?: string;
   risks: string[];
   action: AIAction;
   resolutionSteps: string[];

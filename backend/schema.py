@@ -1,7 +1,6 @@
-from pydantic import BaseModel, Field
+import uuid
 from typing import List, Optional, Literal
-from pydantic import BaseModel, Field
-from typing import List, Optional, Literal
+
 from pydantic import BaseModel, Field
 
 class TicketInput(BaseModel):

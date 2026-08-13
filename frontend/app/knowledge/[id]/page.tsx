@@ -2,7 +2,8 @@
 
 import React, { use } from "react";
 import Link from "next/link";
-import { MOCK_KNOWLEDGE_DOCS } from "@/data/knowledge";
+import { notFound } from "next/navigation";
+import { KNOWLEDGE_DOCS } from "@/data/knowledge.generated";
 import { ArrowLeft, BookOpen, Sparkles, Tag, Clock, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +13,8 @@ export default function KnowledgeDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const doc = MOCK_KNOWLEDGE_DOCS.find((d) => d.id === id) || MOCK_KNOWLEDGE_DOCS[0];
+  const doc = KNOWLEDGE_DOCS.find((d) => d.id === id);
+  if (!doc) notFound();
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">

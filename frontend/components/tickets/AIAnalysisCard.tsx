@@ -11,6 +11,7 @@ import {
   Cpu,
   Layers,
   ShieldAlert,
+  MessageSquareText,
 } from "lucide-react";
 
 export interface AIAnalysisCardProps {
@@ -96,6 +97,30 @@ export const AIAnalysisCard: React.FC<AIAnalysisCardProps> = ({
             <h4 className="font-bold text-sm">Action Bloquée par le Guardrail de Sécurité</h4>
             <p className="text-xs mt-1 text-rose-200/80">{analysis.blockReason}</p>
           </div>
+        </div>
+      )}
+
+      {/* Réponse rédigée par l'agent pour le demandeur */}
+      {analysis.userResponse && (
+        <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/5 p-5 shadow-sm space-y-3">
+          <div className="flex items-center justify-between gap-3 pb-3 border-b border-indigo-500/20">
+            <div className="flex items-center gap-2">
+              <MessageSquareText className="w-4 h-4 text-indigo-400" />
+              <h4 className="text-sm font-bold text-slate-100">
+                Réponse proposée au demandeur
+              </h4>
+            </div>
+            {analysis.sources.length > 0 && (
+              <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-300 shrink-0">
+                Appuyée sur {analysis.sources.length} fiche
+                {analysis.sources.length > 1 ? "s" : ""} KB
+              </span>
+            )}
+          </div>
+
+          <p className="text-xs leading-relaxed text-slate-200 whitespace-pre-line">
+            {analysis.userResponse}
+          </p>
         </div>
       )}
 

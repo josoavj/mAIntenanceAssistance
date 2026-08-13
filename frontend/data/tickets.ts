@@ -52,7 +52,7 @@ export const MOCK_TICKETS: Ticket[] = [
         "Accéder physiquement à l'imprimante EQ-PRN-007 pour vérifier la trappe papier.",
         "Relancer le service Spouleur et tester une page de test.",
       ],
-      sources: ["KB-PRN-04"],
+      sources: ["KB-PRINT-01"],
       humanValidationRequired: false,
     },
     toolCalls: [
@@ -205,7 +205,7 @@ export const MOCK_TICKETS: Ticket[] = [
         "Envoyer le questionnaire automatique de clarification à l'utilisateur.",
         "Relancer l'analyse IA dès réception des compléments.",
       ],
-      sources: ["KB-SOFT-08"],
+      sources: ["KB-HW-01"],
       humanValidationRequired: false,
     },
     toolCalls: [
@@ -322,7 +322,7 @@ export const MOCK_TICKETS: Ticket[] = [
         "Vérification d'identité par téléphone effectuation.",
         "Déverrouillage via l'outil Active Directory Admin.",
       ],
-      sources: ["KB-AUTH-02"],
+      sources: ["KB-AUTH-02", "KB-AUTH-01"],
       humanValidationRequired: true,
       validationReason: "Conforme à la règle KB-AUTH-02 : validation humaine d'identité obligatoire.",
     },

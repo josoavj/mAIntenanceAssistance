@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from schema import TicketInput, TicketClassification
+from schema import TicketInput, DiagnosticRAGOutput
 from classifier import traiter_ticket
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -20,7 +20,7 @@ app.add_middleware(
 def health_check():
     return {"status": "ok", "message": "Service d'assistance IT prêt"}
 
-@app.post("/api/tickets/classify", response_model=TicketClassification)
+@app.post("/api/tickets/classify", response_model=DiagnosticRAGOutput)
 def classify_endpoint(ticket: TicketInput):
     try:
         resultat = traiter_ticket(ticket)
@@ -29,6 +29,6 @@ def classify_endpoint(ticket: TicketInput):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

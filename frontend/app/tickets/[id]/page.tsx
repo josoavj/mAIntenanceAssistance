@@ -4,7 +4,7 @@ import React, { useState, use } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useTickets } from "@/context/TicketContext";
-import { MOCK_KNOWLEDGE_DOCS } from "@/data/knowledge";
+import { KNOWLEDGE_DOCS } from "@/data/knowledge.generated";
 import { AIAnalysisCard } from "@/components/tickets/AIAnalysisCard";
 import { ToolCallCard } from "@/components/tickets/ToolCallCard";
 import { SourceCard } from "@/components/tickets/SourceCard";
@@ -44,7 +44,7 @@ export default function TicketDetailPage({ params }: { params: Promise<{ id: str
   };
 
   // Find linked RAG sources
-  const linkedSources = MOCK_KNOWLEDGE_DOCS.filter((doc) =>
+  const linkedSources = KNOWLEDGE_DOCS.filter((doc) =>
     ticket.aiAnalysis.sources.includes(doc.id)
   );
 

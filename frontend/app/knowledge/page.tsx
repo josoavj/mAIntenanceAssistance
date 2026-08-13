@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { MOCK_KNOWLEDGE_DOCS } from "@/data/knowledge";
+import { KNOWLEDGE_DOCS } from "@/data/knowledge.generated";
 import { TICKET_CATEGORIES } from "@/config/categories";
 import { BookOpen, Search, Sparkles, Tag, ExternalLink, ShieldCheck } from "lucide-react";
 
@@ -10,7 +10,7 @@ export default function KnowledgePage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const filteredDocs = MOCK_KNOWLEDGE_DOCS.filter((doc) => {
+  const filteredDocs = KNOWLEDGE_DOCS.filter((doc) => {
     const matchesSearch =
       doc.title.toLowerCase().includes(search.toLowerCase()) ||
       doc.id.toLowerCase().includes(search.toLowerCase()) ||

@@ -8,7 +8,9 @@ import { Card } from "@/components/ui/card";
 import { TICKET_CATEGORIES } from "@/config/categories";
 import { MOCK_USERS } from "@/data/users";
 import { MOCK_EQUIPMENT } from "@/data/equipment";
-import { TicketCategory } from "@/types";
+import { AIAnalysis, TicketCategory } from "@/types";
+import { classifyTicket } from "@/lib/api/client";
+import { toAIAnalysis } from "@/lib/api/mappers";
 import {
   Ticket,
   Send,
@@ -24,6 +26,7 @@ export default function NewTicketPage() {
 
   const [loading, setLoading] = useState(false);
   const [createdTicketId, setCreatedTicketId] = useState<string | null>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -39,15 +42,46 @@ export default function NewTicketPage() {
     hasAttachment: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setApiError(null);
 
-    setTimeout(() => {
-      const selectedUser = MOCK_USERS.find((u) => u.id === formData.userId);
-      const selectedEquip = MOCK_EQUIPMENT.find((eq) => eq.id === formData.equipmentId);
+    const selectedUser = MOCK_USERS.find((u) => u.id === formData.userId);
+    const selectedEquip = MOCK_EQUIPMENT.find((eq) => eq.id === formData.equipmentId);
 
-      const created = addTicket({
+    const ticketId = `TK-${Date.now().toString().slice(-6)}`;
+    const description = [
+      formData.description,
+      formData.symptoms && `Symptômes : ${formData.symptoms}`,
+      formData.appOrService && `Application/service : ${formData.appOrService}`,
+      formData.onset && `Apparition : ${formData.onset}`,
+      formData.impact && `Impact : ${formData.impact}`,
+      formData.attemptedFixes && `Déjà tenté : ${formData.attemptedFixes}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    let analysis: AIAnalysis | undefined;
+    let failure: string | null = null;
+    try {
+      const res = await classifyTicket({ ticket_id: ticketId, description });
+      analysis = toAIAnalysis(res, formData.category, {
+        user: selectedUser?.name,
+        equipment: selectedEquip?.name,
+        app: formData.appOrService || undefined,
+        symptoms: formData.symptoms || formData.title,
+        onset: formData.onset || undefined,
+        impact: formData.impact || undefined,
+        attemptedFixes: formData.attemptedFixes || undefined,
+      });
+    } catch (err) {
+      failure = err instanceof Error ? err.message : "Analyse IA indisponible.";
+      setApiError(failure);
+    }
+
+    const created = addTicket(
+      {
         title: formData.title,
         description: formData.description,
         userId: formData.userId,
@@ -63,15 +97,16 @@ export default function NewTicketPage() {
         impact: formData.impact,
         attemptedFixes: formData.attemptedFixes,
         hasAttachment: formData.hasAttachment,
-      });
+      },
+      analysis
+    );
 
-      setLoading(false);
-      setCreatedTicketId(created.id);
+    setLoading(false);
+    setCreatedTicketId(created.id);
 
-      setTimeout(() => {
-        router.push(`/tickets/${created.id}`);
-      }, 1200);
-    }, 800);
+    setTimeout(() => {
+      router.push(`/tickets/${created.id}`);
+    }, failure ? 2600 : 1200);
   };
 
   if (createdTicketId) {
@@ -87,6 +122,15 @@ export default function NewTicketPage() {
           <p className="text-xs text-slate-300">
             L'agent autonome a classifié vos déclarations, interrogé la base RAG local et généré le diagnostic préliminaire.
           </p>
+
+          {apiError && (
+            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-left space-y-1">
+              <p className="text-xs font-bold text-amber-300">
+                Analyse IA distante indisponible — diagnostic de repli affiché
+              </p>
+              <p className="text-[11px] text-amber-200/80 break-words">{apiError}</p>
+            </div>
+          )}
           <div className="flex items-center justify-center gap-2 text-xs font-semibold text-indigo-400">
             <Loader2 className="w-4 h-4 animate-spin" />
             Ouverture de la fiche du ticket {createdTicketId}...

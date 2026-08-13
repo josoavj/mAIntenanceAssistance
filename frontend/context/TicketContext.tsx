@@ -1,12 +1,16 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { Ticket } from "@/types";
+import { AIAnalysis, Ticket } from "@/types";
 import { MOCK_TICKETS } from "@/data/tickets";
+import { statusForAction } from "@/lib/api/mappers";
 
 interface TicketContextType {
   tickets: Ticket[];
-  addTicket: (newTicket: Omit<Ticket, "id" | "createdAt" | "updatedAt" | "aiAnalysis" | "toolCalls" | "status" | "priority" | "assignedTeam"> & { category: Ticket["category"] }) => Ticket;
+  addTicket: (
+    newTicket: Omit<Ticket, "id" | "createdAt" | "updatedAt" | "aiAnalysis" | "toolCalls" | "status" | "priority" | "assignedTeam"> & { category: Ticket["category"] },
+    analysis?: AIAnalysis
+  ) => Ticket;
   getTicketById: (id: string) => Ticket | undefined;
   updateTicketStatus: (id: string, status: Ticket["status"]) => void;
 }
@@ -38,9 +42,41 @@ export const TicketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   };
 
-  const addTicket: TicketContextType["addTicket"] = (data) => {
+  const addTicket: TicketContextType["addTicket"] = (data, analysis) => {
     const newId = `TK-${1000 + tickets.length + 1}`;
     const now = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    // Repli utilisé quand l'API d'analyse est injoignable (quota LLM, cold start Render).
+    const mockAnalysis: AIAnalysis = {
+      category: data.category,
+      priority: "Moyenne",
+      team: "Support Utilisateurs",
+      confidence: 88,
+      reasoning: "Ticket nouvellement créé par l'utilisateur. Analyse sémantique préliminaire effectuée par le Copilot IA.",
+      extractedInfo: {
+        user: data.userName || "Utilisateur ISPM",
+        equipment: data.equipmentName || "Non spécifié",
+        app: data.appOrService || "Système Général",
+        symptoms: data.symptoms || data.title,
+        onset: data.onset || "Ce jour",
+        impact: data.impact || "Modéré",
+        attemptedFixes: data.attemptedFixes || "Non renseigné",
+      },
+      missingInformation: [],
+      questionsToAsk: [],
+      diagnosis: `Compréhension automatique réalisée. Le problème concerne la catégorie ${data.category}. Plan de vérification en cours d'exécution.`,
+      risks: ["Interruption d'activité modérée"],
+      action: "resolution",
+      resolutionSteps: [
+        "Vérifier la connectivité et la configuration du service concerné.",
+        "Consulter la fiche technique RAG équivalente dans la base de connaissances.",
+        "Effectuer un test de bon fonctionnement avec le demandeur.",
+      ],
+      sources: ["KB-NET-01"],
+      humanValidationRequired: false,
+    };
+
+    const aiAnalysis = analysis ?? mockAnalysis;
 
     const createdTicket: Ticket = {
       id: newId,
@@ -58,48 +94,23 @@ export const TicketProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       impact: data.impact || "Normal",
       attemptedFixes: data.attemptedFixes || "Aucune manipulation",
       hasAttachment: data.hasAttachment || false,
-      status: "Nouveau",
-      priority: "Moyenne",
-      category: data.category,
-      assignedTeam: "Support Utilisateurs",
+      status: analysis ? statusForAction(analysis.action) : "Nouveau",
+      priority: aiAnalysis.priority,
+      category: aiAnalysis.category,
+      assignedTeam: aiAnalysis.team,
       createdAt: now,
       updatedAt: now,
-      aiAnalysis: {
-        category: data.category,
-        priority: "Moyenne",
-        team: "Support Utilisateurs",
-        confidence: 88,
-        reasoning: "Ticket nouvellement créé par l'utilisateur. Analyse sémantique préliminaire effectuée par le Copilot IA.",
-        extractedInfo: {
-          user: data.userName || "Utilisateur ISPM",
-          equipment: data.equipmentName || "Non spécifié",
-          app: data.appOrService || "Système Général",
-          symptoms: data.symptoms || data.title,
-          onset: data.onset || "Ce jour",
-          impact: data.impact || "Modéré",
-          attemptedFixes: data.attemptedFixes || "Non renseigné",
-        },
-        missingInformation: [],
-        questionsToAsk: [],
-        diagnosis: `Compréhension automatique réalisée. Le problème concerne la catégorie ${data.category}. Plan de vérification en cours d'exécution.`,
-        risks: ["Interruption d'activité modérée"],
-        action: "resolution",
-        resolutionSteps: [
-          "Vérifier la connectivité et la configuration du service concerné.",
-          "Consulter la fiche technique RAG équivalente dans la base de connaissances.",
-          "Effectuer un test de bon fonctionnement avec le demandeur.",
-        ],
-        sources: ["KB-NET-01"],
-        humanValidationRequired: false,
-      },
+      aiAnalysis,
       toolCalls: [
         {
           id: `TC-${Date.now()}`,
-          toolName: "analyser_nouveau_ticket",
-          status: "success",
+          toolName: analysis ? "rechercher_dans_kb" : "analyser_nouveau_ticket",
+          status: analysis ? "success" : "warning",
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          params: { ticketId: newId, category: data.category },
-          result: { status: "Analyse terminée", confidence: 88 },
+          params: { ticketId: newId, query: data.description.slice(0, 120) },
+          result: analysis
+            ? { sources: aiAnalysis.sources, confidence: aiAnalysis.confidence }
+            : { status: "API indisponible — analyse locale de repli", confidence: aiAnalysis.confidence },
         },
       ],
     };
