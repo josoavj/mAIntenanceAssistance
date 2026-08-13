@@ -1,6 +1,6 @@
 # ID: KB-HW-01
 # Titre: Panne de poste de travail (ordinateur portable ou de bureau)
-# Catégorie: Materiel informatique - Postes de travail
+# Catégorie: Matériel informatique - Postes de travail
 
 ## Symptômes
 
