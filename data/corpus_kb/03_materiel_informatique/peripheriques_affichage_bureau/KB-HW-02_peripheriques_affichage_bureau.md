@@ -1,6 +1,6 @@
 # ID: KB-HW-02
 # Titre: Panne des périphériques d'affichage et de bureau
-# Catégorie: Materiel informatique - Peripheriques d'affichage et de bureau
+# Catégorie: Matériel informatique - Périphériques d'affichage et de bureau
 
 ## Symptômes
 
