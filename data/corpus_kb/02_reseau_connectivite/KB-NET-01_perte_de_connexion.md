@@ -1,6 +1,6 @@
 # ID: KB-NET-01
 # Titre: Perte de connexion réseau
-# Catégorie: Reseau et connectivité
+# Catégorie: Réseau et connectivité
 
 ## Symptômes
 
