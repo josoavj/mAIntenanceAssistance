@@ -1,6 +1,8 @@
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
+from schema import TicketInput, DiagnosticRAGOutput
+from classifier import traiter_ticket
 from fastapi.middleware.cors import CORSMiddleware
 
 from schema import TicketInput, DiagnosticRAGOutput
@@ -51,6 +53,7 @@ def health_check():
         "docs": "/docs"
     }
 
+@app.post("/api/tickets/classify", response_model=DiagnosticRAGOutput)
 # 5. Endpoint principal de classification et RAG
 @app.post(
     "/api/tickets/classify", 
@@ -64,6 +67,12 @@ def classify_endpoint(ticket: TicketInput):
         resultat = traiter_ticket(ticket)
         return resultat
     except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
         print(f"Erreur lors du traitement : {e}")
         raise HTTPException(
             status_code=500, 

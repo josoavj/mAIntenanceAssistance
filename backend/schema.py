@@ -1,3 +1,7 @@
+import uuid
+from typing import List, Optional, Literal
+
+from pydantic import BaseModel, Field
 # schema.py
 from pydantic import BaseModel, Field
 from typing import List, Literal, Optional
