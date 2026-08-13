@@ -1,6 +1,6 @@
 # ID: KB-HW-06
 # Titre: Webcam ou microphone non fonctionnel en visioconference
-# Catégorie: Materiel informatique - Peripheriques d'affichage et de bureau
+# Catégorie: Matériel informatique - Périphériques d'affichage et de bureau
 
 ## Symptômes
 
