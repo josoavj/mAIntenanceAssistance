@@ -1,6 +1,6 @@
 # ID: KB-NET-02
 # Titre: Lenteur réseau
-# Catégorie: Reseau et connectivité
+# Catégorie: Réseau et connectivité
 
 ## Symptômes
 
