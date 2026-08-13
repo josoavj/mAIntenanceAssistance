@@ -11,7 +11,7 @@ collection = chroma_client.get_or_create_collection(
     embedding_function=embedding_fn
 )
 
-def charger_corpus_kb(kb_root_path="./data/corpus_kb"):
+def charger_corpus_kb(kb_root_path="../data/corpus_kb"):
     if not os.path.exists(kb_root_path):
         print(f"Dossier introuvable : {kb_root_path}")
         return
